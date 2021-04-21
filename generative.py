@@ -11,7 +11,10 @@ else:
 window = pyglet.window.Window(1024, 768)
 HEIGHT = window.height
 WIDTH = window.width
-
+picture = pyglet.resource.image('avatars/U01AE0JEC2C.png')
+splim = pyglet.sprite.Sprite(picture)
+splim.x = 0
+splim.y = 0
 
 def getDims(num):
     # limit of 100 sub-divisions???
@@ -61,6 +64,9 @@ def makeSquare(num):
     for i in range(div):
         squares.update(makeARow(div, i, num))
     print(f"Squares: {squares.keys()}")
+    print('squares are {} x {}.'.format(WIDTH/div, HEIGHT/div))
+    # this is working for scaling || the height of the subsection devided by height of image to get a scale ratio
+    splim.scale = (HEIGHT/div)/splim.height
     return squares
 
 
@@ -70,6 +76,9 @@ def on_draw():
     window.clear()
     for key in squares.keys():
         squares[key].draw()
+    splim.draw()
+
+
 
 
 pyglet.app.run()
