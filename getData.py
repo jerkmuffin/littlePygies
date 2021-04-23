@@ -42,8 +42,10 @@ class getSlacky():
             self.fetch_avatar(info.data['user']['profile']['image_512'], i['id'])
         return self.usersList.data
 
-g = getSlacky()
-userList = g.getUserInfo()
-print(json.dumps(userList, indent=2))
+
+if __name__ == "__main__":
+    g = getSlacky()
+    userList = g.getUserInfo()
+    print(json.dumps(userList, indent=2))
 # mikeInfo = client.users_info(user='U9QQAS7FS')
 # print(json.dumps(mikeInfo.data))
